@@ -1,0 +1,522 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+$primaryColor: #164a41;
+$secondaryColor: #4d774e;
+$tertiaryColor: #9dc88d;
+$accentColor: #f1b24a;
+$color: #d5d5d5;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+@include mobile {
+  * {
+    font-size: 14px;
+  }
+}
+
+.formContainer {
+  background-image: linear-gradient(90deg, $secondaryColor, $primaryColor);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 60px;
+    border-radius: 100px 100px 100px 0;
+    color: $color;
+    // background-color: $primaryColor;
+    // box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+    width: 300px;
+
+    @include mobile {
+      width: 65%;
+      background: transparent;
+      box-shadow: none;
+      padding: 40px 20px;
+    }
+
+    .or {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      color: white;
+      margin: 20px 0;
+      font-size: 0.8rem;
+
+      hr {
+        width: 40%;
+        height: 1px;
+        background-color: white;
+        border: none;
+        align-self: center;
+      }
+    }
+
+    .logo {
+      color: $accentColor;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .loginWithGoogleButton {
+      transition: 0.3s;
+      min-width: 300px;
+      padding: 14px 10px;
+      outline: none;
+      border: 1px solid $color;
+      border-radius: 15px;
+      background-color: transparent;
+      margin-bottom: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: $color;
+      font-weight: 500;
+
+      svg {
+        width: 20px;
+        margin-right: 10px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 300;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      @include mobile {
+        gap: 20px;
+      }
+
+      input {
+        width: 276px;
+        padding: 14px 12px;
+        outline: none;
+        border: 1px solid $color;
+        border-radius: 15px;
+        background-color: transparent;
+        color: white;
+        transition: 0.3s;
+
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+        }
+        &::placeholder {
+          color: $color;
+        }
+
+        @include mobile {
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .error {
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        color: rgb(145, 0, 0);
+      }
+
+      label {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          width: 24px;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        .avatarText {
+          margin: auto 10px;
+        }
+      }
+
+      button {
+        background-color: $accentColor;
+        padding: 15px 0px;
+        box-shadow: none;
+        border: none;
+        border-radius: 15px;
+        font-size: 14px;
+        transition: 0.5s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        @include mobile {
+          color: black;
+        }
+      }
+    }
+    p {
+      margin: 10px 0;
+
+      .link {
+        text-decoration: none;
+        color: $accentColor;
+
+        &:active {
+          color: $color;
+        }
+      }
+    }
+  }
+}
+
+.home {
+  background-image: linear-gradient(90deg, $secondaryColor, $primaryColor);
+  min-height: 500px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  color: $color;
+
+  .container {
+    width: 90%;
+    height: 90%;
+    background-color: $primaryColor;
+    // box-shadow: 0 0 10px 10px rgba($color: black, $alpha: .2);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .sidebar {
+      flex: 1;
+      background-color: $primaryColor;
+      padding: 15px 0;
+
+      .navbar {
+        .logo {
+          color: $accentColor;
+          font-size: 24px;
+          font-weight: 600;
+          padding-left: 20px;
+        }
+      }
+
+      .search {
+        .searchForm {
+          padding-left: 20px;
+          input {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            // border-radius: 20px;
+            padding: 10px 5px;
+            margin: 10px 5px;
+            width: calc(100% - 40px);
+            color: $color;
+
+            &::placeholder {
+              color: gray;
+            }
+
+            .searchIcon {
+              position: absolute;
+              margin-bottom: -3px;
+            }
+
+            
+          }
+        }
+      }
+
+      .userChat {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+        padding: 8px 20px;
+
+        &:hover {
+          background-color: #0f3932;
+
+          img {
+            transform: scale(1.1);
+            transition: .5s ease-in-out;
+            
+          }
+        }
+
+        img {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .userChatInfo {
+          span {
+            font-size: 16px;
+            font-weight: 500;
+          }
+          p {
+            font-size: 14px;
+            color: rgb(167, 167, 167);
+          }
+        }
+      }
+    }
+    .chat {
+      flex: 2;
+      background-color: #195147;
+
+      .chatInfo {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        padding: 10px;
+        background-color: #12423a;
+
+        .chatIcons {
+          display: flex;
+          gap: 10px;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          .userChatInfo {
+            span {
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      .messages {
+        height: calc(100% - 156px);
+        padding: 8px;
+        overflow-y: scroll;
+
+        .message {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 20px;
+
+          .messageInfo {
+            img {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+
+          .messageContent {
+            max-width: 70%;
+            p {
+              background-color: #0cc20f;
+              border-radius: 0 10px 10px 10px;
+              padding: 9px;
+              // max-width: 70%;
+              max-width: max-content;
+            }
+
+            img {
+              width: 100%;
+              object-fit: cover;
+              border-radius: 10px;
+              display: block;
+            }
+            .time {
+              font-size: 12px;
+              color: lightgrey;
+            }
+          }
+
+          &.owner {
+            flex-direction: row-reverse;
+            justify-content: end;
+
+            .messageContent {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+
+              p {
+                background-color: #6d8066;
+                border-radius: 10px 0 10px 10px;
+                display: flex;
+                flex-direction: row-reverse;
+              }
+            }
+          }
+        }
+      }
+
+      .input {
+        height: 50px;
+        padding: 10px;
+        background-color: #12423a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          background-color: transparent;
+          width: 90%;
+          border: none;
+          outline: none;
+          padding-left: 10px;
+          color: $color;
+        }
+
+        .send {
+          display: flex;
+          gap: 10px;
+
+          label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          button {
+            background-color: #164a41;
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            padding: 16px 15px 14px 19px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .info {
+      flex: 1;
+      background-color: $primaryColor;
+
+      background-color: #0f3932;
+      width: calc(100% - 20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: calc(100% - 20px);
+      padding: 10px;
+
+      .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 40%;
+        align-items: center;
+        padding: 15px 0;
+
+        .userInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          align-items: center;
+
+          img {
+            height: 115px;
+            width: 115px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+          }
+
+          .profileName{
+            text-transform: capitalize;
+          }
+
+          .profileStatus {
+            font-size: 13px;
+            color: #0cc20f;
+          }
+        }
+      }
+
+      .bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        button {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          color: $color;
+          cursor: pointer;
+        }
+
+        .logo {
+          color: $accentColor;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
